@@ -15,4 +15,4 @@ docker build \
 
 
 echo -e "${LIGHT_BLUE}starting dev and mongo containers${RESET}"
-docker-compose -f ${CWD}/../docker-compose.yml up --build
+#docker-compose -f ${CWD}/../docker-compose.yml up --build

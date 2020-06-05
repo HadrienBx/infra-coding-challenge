@@ -1,4 +1,4 @@
-FROM node:12.5-stretch
+FROM node:12-stretch
 
 COPY ./package.json ./entrypoint.sh /code/
 

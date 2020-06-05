@@ -5,7 +5,27 @@ const mongo = require('./clients/mongo');
     await mongo.connect();
     await mongo.flushCollections();
     
-    server.listen(9000, () => {
-        console.log('server listening on port 9000');
+    let http = server.listen(9000, () => {
+        console.log('Server listening on port 9000');
     });
+
+    let poop = 0;
+    let morepoop = 0;
+
+
+    http.on('connection', (con) => {
+        poop++;
+        console.log(poop);
+
+        con.on('request', (req) => {
+            morepoop++;
+            console.log(morepoop)
+        })
+    });
+
+    process.on('SIGINT', () => {
+        http.close(() => {
+            console.log('No longer accepting connections.');
+        });
+    })
 })();

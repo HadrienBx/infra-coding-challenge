@@ -3,7 +3,7 @@ version: '3.7'
 services:
   api:
     container_name: api
-    image: node:12.5-stretch
+    image: node:12-stretch
     networks:
       - devnet
     ports:
@@ -15,7 +15,7 @@ services:
     command: bash -c "cd /code && npm install && sleep infinity"
   mongo:
     container_name: mongo
-    image: mongo:4.0.9
+    image: mongo:3.6.3
     networks:
       devnet:
         aliases: 

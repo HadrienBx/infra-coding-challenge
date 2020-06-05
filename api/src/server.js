@@ -19,11 +19,12 @@ server.post('/users', async (req, res) => {
     return res.status(200).json(user);
 });
 
-async function somethingSlow(userID) {
-    await mongo.user.updateOne({ _id: userID }, { $set: { processed: true } });
-    
+async function somethingSlow(userID) {    
     const sleepSeconds = generateRandomNum(5, 15);
-    return await sleep(sleepSeconds * 1000);
+    await sleep(sleepSeconds * 1000);
+    await mongo.user.updateOne({ _id: userID }, { $set: { processed: true } });
+
+    return 
 }
 
 server.delete('/collections', async (req, res) => {
